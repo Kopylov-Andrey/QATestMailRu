@@ -19,7 +19,9 @@ namespace TestMailRu.Tests
         //    set { testContextInstance = value; }
         //}
 
-        // долго пытался понять почему не работает, выяснилось что .NET CORE не поддерживает DataSource и TestContext
+
+
+        // for a long time I tried to understand why it doesn't work, it turned out that.NET CORE does not support DataSource and TestContext
 
         [TestInitialize]
         public void SetUp()

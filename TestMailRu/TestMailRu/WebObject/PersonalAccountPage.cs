@@ -94,7 +94,6 @@ namespace TestMailRu.WebObject
             else return false;
         }
 
-
         public bool GetMailYorSelf()
         {
             if (mailInYourSelfMessege != null)

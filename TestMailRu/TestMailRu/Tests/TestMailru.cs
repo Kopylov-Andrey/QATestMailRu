@@ -5,10 +5,6 @@ using TestMailRu.Entities;
 
 
 
-
-
-
-
 namespace TestMailRu.Tests
 {
     [TestClass]
@@ -18,13 +14,13 @@ namespace TestMailRu.Tests
         private HomePage homePage;
         private PersonalAccountPage personalAccountPage;
         private User user = new User("TestUser", Configuration.Login, Configuration.Password);
-        
-        
-        
-        //[DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\TestData.csv", "TestData#csv", DataAccessMethod.Sequential)]
-        // как я понял .NET CORE не поддерживает DataSource
 
-       
+
+
+        //[DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\TestData.csv", "TestData#csv", DataAccessMethod.Sequential)]
+        // as I understood .NET CORE does not support DataSource
+
+
         [TestMethod]
         public void TestSavingLetterInDraft()
         {            
