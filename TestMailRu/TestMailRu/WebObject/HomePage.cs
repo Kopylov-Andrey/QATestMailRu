@@ -1,25 +1,29 @@
 ﻿using OpenQA.Selenium;
+using TestMailRu.Entities;
 
 namespace TestMailRu.WebObject
 {
     public class HomePage : BasePage
     {
-        private static readonly By HomeLbl = By.Name("clb31774563");
+        private static readonly By HomeLbl = By.XPath("//*[@id='root']/div/div[2]/div/div/div/div/form/div[2]/div[1]/div/div/div[1]/span");
 
         public HomePage() : base (HomeLbl, "Home Page") {}
 
-        private readonly BaseElement buttonEnteringPassword = new BaseElement(By.XPath("//*[@id='mailbox']/form[1]/button[1]"));
-        private readonly BaseElement buttonLogInAccount = new BaseElement(By.XPath("//*[@id='mailbox']/form[1]/button[2]"));
-        private readonly BaseElement logiEntryField = new BaseElement(By.XPath("//*[@id='mailbox']/form[1]/div[1]/div[2]/input"));
-        private readonly BaseElement passwordEntryField = new BaseElement(By.XPath("//*[@id='mailbox']/form[1]/div[2]/input"));
-    
-        public void LogInToMailbox(string login, string password)
+        private readonly BaseElement buttonEnteringPassword = new BaseElement(By.XPath("//*[@id='root']/div/div[2]/div/div/div/div/form/div[2]/div[2]/div[3]/div/div/div[1]/button/span"));
+        private readonly BaseElement buttonLogInAccount = new BaseElement(By.XPath("//*[@id='root']/div/div[2]/div/div/div/div/form/div[2]/div/div[3]/div/div/div[1]/div/button/span"));
+        private readonly BaseElement logiEntryField = new BaseElement(By.XPath("//*[@id='root']/div/div[2]/div/div/div/div/form/div[2]/div[2]/div[1]/div/div/div/div/div/div[1]/div/input"));
+        private readonly BaseElement passwordEntryField = new BaseElement(By.XPath("//*[@id='root']/div/div[2]/div/div/div/div/form/div[2]/div/div[2]/div/div/div/div/div/input"));
+       
+
+
+        public void LogInToMailbox(User user)
         {
-            logiEntryField.SendKeys(login);
+           
+            logiEntryField.SendKeys(user.Login);
 
             buttonEnteringPassword.Click();
 
-            passwordEntryField.SendKeys(password);
+            passwordEntryField.SendKeys(user.Password);
 
             buttonLogInAccount.Click();
         }

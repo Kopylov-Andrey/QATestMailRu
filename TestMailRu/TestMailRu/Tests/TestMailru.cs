@@ -1,6 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestMailRu.WebObject;
 using TestMailRu.WebDriver;
+using TestMailRu.Entities;
+
+
 
 
 
@@ -14,31 +17,37 @@ namespace TestMailRu.Tests
        
         private HomePage homePage;
         private PersonalAccountPage personalAccountPage;
+        private User user = new User("TestUser", Configuration.Login, Configuration.Password);
+        
+        
+        
+        //[DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\TestData.csv", "TestData#csv", DataAccessMethod.Sequential)]
+        // как я понял .NET CORE не поддерживает DataSource
 
-        private string password = Configuration.Password;
-        private string login = Configuration.Login;
        
         [TestMethod]
         public void TestSavingLetterInDraft()
-        {
+        {            
             homePage = new HomePage();
-            homePage.LogInToMailbox(login, password);
+            homePage.LogInToMailbox(user);
             personalAccountPage = new PersonalAccountPage();
-            personalAccountPage.WriteMail(login, "Test mail for EPAM", "Lorem Ipsum is simply dummy text of the printing and typesetting");
+            personalAccountPage.WriteMail(user, "Test mail for EPAM", "Lorem Ipsum is simply dummy text of the printing and typesetting");
+            personalAccountPage.SaveMassege();
             personalAccountPage.ExitMail();
         }
-        //
+        
         [TestMethod]
         public void TestzDeletedLetterInDraft()
-        {
+        {           
             homePage = new HomePage();
-            homePage.LogInToMailbox(login, password);
+            homePage.LogInToMailbox(user);
             personalAccountPage = new PersonalAccountPage();
             personalAccountPage.OpenDraft();
             personalAccountPage.DeleteDraft();
             personalAccountPage.ExitMail();
         }
 
+     
 
 
 

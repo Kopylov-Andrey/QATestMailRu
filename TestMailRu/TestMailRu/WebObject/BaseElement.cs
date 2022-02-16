@@ -14,6 +14,8 @@ namespace TestMailRu.WebObject
         protected By locator;
         protected IWebElement element;
 
+        
+
         public BaseElement(By locator, string name)
         {
             
